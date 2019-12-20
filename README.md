@@ -7,13 +7,13 @@ NASA-CEAが使いにくすぎて作ったエンジンの燃料設計をするソ
 # Download
 |Platform|Version|Date|Remarks|
 |:------:|:------:|:------:|:------:|
-|Windows|[1.0.0](https://github.com/FROM-THE-EARTH/FTE-EngineCEA/raw/master/FTE-EngineCEA/App/FTE-EngineCEA.zip)|2019/12/20|これ以上更新することなさそう。|
+|Windows|[1.0.0](https://github.com/FROM-THE-EARTH/FTE_EngineCEA/raw/master/FTE-EngineCEA/App/FTE-EngineCEA.zip)|2019/12/20|これ以上更新することなさそう。|
 
 最初から入ってるファイルたちは消さないようにしてください。
 
 # For Developers
 
-[ここ](https://github.com/FROM-THE-EARTH/FTE-EngineCEA/blob/master/FOR%20DEVELOPERS.txt)にたくさん書いときました。
+[ここ](https://github.com/FROM-THE-EARTH/FTE_EngineCEA/blob/master/FOR%20DEVELOPERS.txt)にたくさん書いときました。
 
 開発環境はC#, VisualStudioです。
 
