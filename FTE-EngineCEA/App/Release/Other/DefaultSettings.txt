@@ -1,0 +1,13 @@
+ChamberTemperature=3000
+
+OxidName=N2O
+OxidAmount=100
+OxidTemp=290
+OxidFormula=N2O
+OxidEnergyH=
+
+FuelName=paraffin
+FuelAmount=100
+FuelTemp=290
+FuelFormula=C27H56
+FuelEnergyH=817.1
