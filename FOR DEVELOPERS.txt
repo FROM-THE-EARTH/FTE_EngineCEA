@@ -1,127 +1,127 @@
-�A���͋ߓ��b�x(LINE:������[)�܂�
-�Ƃ肠�����v���O�����{�̂�������܂������A�����Ȃɂ�������Ȃ��Ƃ��L��΋����ĉ������B
-C#����܂�g�������ƂȂ������̂ł��Ȃ薳�ʂ̂���v���O�������Ǝv���܂��B
-����C#�G�������Ƃ���l(������GUI����)�͂قڂ��Ȃ��Ǝv���܂����AC�����m���Ă���Α��v�Ȃ͂��ł��BC�ɑΉ������֐���\�L�@������͂��Ȃ̂ŃO�O��Ώo��Ǝv���܂��B
+連絡は9期近藤恵休(LINE:えきゅー)まで
+とりあえずプログラム本体だけ入れましたが、もしなにかが足りないとか有れば教えて下さい。
+C#あんまり使ったことなかったのでかなり無駄のあるプログラムだと思います。
+多分C#触ったことある人(しかもGUI制作)はほぼいないと思いますが、Cさえ知っていれば大丈夫なはずです。Cに対応した関数や表記法があるはずなのでググれば出ると思います。
 
-�����s��
-�����C#�A���s����VisualStudio2017�ł��B
-���Ƃł͑����R�}���h���C������v���O�������s���Ă�Ǝv���܂����AVisualStudio�Ƃ��������J�������C���X�g�[������̂��������߂ł��BC,C++,python�Ȃǂ����̃\�t�g�����ŊȒP�ɊJ���ł��܂��B
+○実行環境
+言語はC#、実行環境はVisualStudio2017です。
+授業では多分コマンドラインからプログラム実行してると思いますが、VisualStudioという統合開発環境をインストールするのがおすすめです。C,C++,pythonなどをこのソフトだけで簡単に開発できます。
 
 
-���v���O�����̊T�v
-using....�@C�ł����Ƃ����#include�A���ꂪ�Ȃ��Ɠ����Ȃ��֐������X����B
+○プログラムの概要
+using....　Cでいうところの#include、これがないと動かない関数が多々ある。
 
 namespace FTE_EngineCEA
 {
 	class main
 	{
-		...  �����Ń\�t�g�����������N����炵�Ă�B�����łȂɂ����������鎖�͂܂������B
+		...  ここでソフトを初期化やら起動やらしてる。自分でなにか書き換える事はまず無い。
 	}
 
 	class Window : Form
 	{
-		... ���X�̕ϐ��Ȃǂ��`
+		... 諸々の変数などを定義
 		
 		public Window()
 		{
-			... ������GUI�̊�{���i�����߂Ă�B�{�^���������Ɖ������N�����̓C�x���g�Ƃ��������Ŋ֐����Ăяo���čs���B
+			... ここでGUIの基本骨格を決めてる。ボタンを押すと何かが起きるやつはイベントという処理で関数を呼び出して行う。
 		}
 		
-		... ���X�̊֐��Ȃ�
+		... 諸々の関数など
 	}
 	
 }
 
 
-�����C�A�E�g�̕ύX�i�{�^���E�e�L�X�g�{�b�N�X�̈ړ��E�ǉ��Ȃǁj
-�܂��A�ϐ��̒�`�����Ă���Ƃ����
-�@//�{�^��
-�@const int buttonNum = 5;
-�@Button[] button = new Button[buttonNum];
-�݂����Ȃ������Ǝv���܂��B��{�I�ɂ́Aconst int num��num�̗v�f���������z��ɂȂ��Ă܂��B
-num�͂��̂܂܂��̃I�u�W�F�N�g�̌��A�z��̓I�u�W�F�N�g���̂��̂ł��B
-���ɁApublic Window()����
-�@//�{�^��
-�@this.button[].Location=...
-�@this.button[].Text=...
-�Ə����Ă���Ƃ�������܂��B
-����͌����܂܂ŁALocation�ŃI�u�W�F�N�g��x-y���W���w�肵�Ă��āAText�ŃI�u�W�F�N�g�ɕ\�����镶�����w�肵�Ă��܂��B
-�^�ɂ���Ă�.Font�Ƃ��������肵�܂����A��������΂킩��܂��B
-�܂�A�I�u�W�F�N�g��ǉ�����Ȃ�num�𑝂₵�āA.Location�Ȃǂ�ǉ����Ă����B
-�ړ�����Ȃ�A.Location�Ȃǂ̒l��ς��邱�Ƃłł��܂��B
-�������A���W�I�{�^�������̓O���[�v�{�b�N�X�ƃZ�b�g�Ŏg���܂��B�O���[�v�{�b�N�X�Ń��W�I�{�^����2��1�g�Ƃ��ĊǗ��ł���悤�ɂȂ�܂��B
+○レイアウトの変更（ボタン・テキストボックスの移動・追加など）
+まず、変数の定義をしているところに
+　//ボタン
+　const int buttonNum = 5;
+　Button[] button = new Button[buttonNum];
+みたいなやつがあると思います。基本的には、const int numとnum個の要素をもった配列になってます。
+numはそのままそのオブジェクトの個数、配列はオブジェクトそのものです。
+次に、public Window()内の
+　//ボタン
+　this.button[].Location=...
+　this.button[].Text=...
+と書いてあるところを見ます。
+これは見たままで、Locationでオブジェクトのx-y座標を指定していて、Textでオブジェクトに表示する文字を指定しています。
+型によっては.Fontとかあったりしますが、多分見ればわかります。
+つまり、オブジェクトを追加するならnumを増やして、.Locationなどを追加していく。
+移動するなら、.Locationなどの値を変えることでできます。
+ただし、ラジオボタンだけはグループボックスとセットで使います。グループボックスでラジオボタンを2つで1組として管理できるようになります。
 
 
-����v�֐�
-�{�^�����������ƂŎ��s�����֐��́A
-�@//�C�x���g
-�@this.button[0].Click += new EventHandler(saveINP);
-�@this.button[1].Click += new EventHandler(runCEA);
-�@this.button[2].Click += new EventHandler(saveAsXLSX);
-�@this.button[3].Click += new EventHandler(calcIndividually);
-�@this.button[4].Click += new EventHandler(openFileByExcel);
-�Ə����Ă���ʂ�ł��B���ꂼ��̊֐��ɂ��Čy��������܂��B
-�I�u�W�F�N�g��z��ŏ������������ł��Ȃ茩�ɂ����Ƃ��낪����܂��B�����܂���B
+○主要関数
+ボタンを押すことで実行される関数は、
+　//イベント
+　this.button[0].Click += new EventHandler(saveINP);
+　this.button[1].Click += new EventHandler(runCEA);
+　this.button[2].Click += new EventHandler(saveAsXLSX);
+　this.button[3].Click += new EventHandler(calcIndividually);
+　this.button[4].Click += new EventHandler(openFileByExcel);
+と書いてある通りです。それぞれの関数について軽く解説します。
+オブジェクトを配列で処理したせいでかなり見にくいところがあります。すいません。
 
-�EsaveINP
-�e�L�X�g�{�b�N�X�ɓ��͂��ꂽ���l�╶���������.inp�t�@�C�����쐬���܂��B
-����Ƃ��ẮA�ϐ���`����O����(���l���͗��ɐ��l�ȊO�����͂���Ă�Ȃ�)���i��肪����΃G���[�\�����ďI���j�����l�A������̏�����.inp�ŕۑ��@�ƂȂ��Ă��܂��B
-�e�L�X�g�{�b�N�X�ɓ��͂��ꂽ���̂͂��ꂪ���l�ł����Ă�������Ƃ��ď��������̂ŁAdouble.Parse�ȂǂŐ��l�ɕϊ����Ďg���܂��B
+・saveINP
+テキストボックスに入力された数値や文字列を元に.inpファイルを作成します。
+流れとしては、変数定義→例外処理(数値入力欄に数値以外が入力されてるなど)→（問題があればエラー表示して終わり）→数値、文字列の処理→.inpで保存　となっています。
+テキストボックスに入力されたものはそれが数値であっても文字列として処理されるので、double.Parseなどで数値に変換して使います。
 
-�ErunCEA
-NASA-CEA���N�����܂��B
-�t�@�C�������w�肳��Ă���΁Acea�N����cea�̃E�B���h�E���A�N�e�B�u�Ɂ��t�@�C��������́A�G���^�[
-�Ƃ������������邱�ƂŁA�킴�킴�蓮��cea��Ńt�@�C���w�������K�v���Ȃ��Ȃ�܂��B
-����ɂ��t�@�C����.inp�����ɂ����v�Z���ʂ������ꂽ�t�@�C����.out���쐬����܂��B
-.inp��.out�ł̌v�Z�͊��S��NASA-CEA�Ŋ������Ă���̂ŁA���ŉ������Ă��邩�͑S���킩��܂���B
+・runCEA
+NASA-CEAを起動します。
+ファイル名が指定されていれば、cea起動→ceaのウィンドウをアクティブに→ファイル名を入力、エンター
+という処理をすることで、わざわざ手動でcea上でファイル指定をする必要がなくなります。
+これによりファイル名.inpを元にした計算結果が書かれたファイル名.outが作成されます。
+.inp→.outでの計算は完全にNASA-CEAで完結しているので、中で何をしているかは全くわかりません。
 
-�EsaveAsXLSX
-.out���̃f�[�^����K�v�ȃf�[�^�����o����.xlsx�Ƃ��ĕۑ����܂��B
-��������Ԃ߂�ǂ��Ƃ��ł��BgetReadingIndex(),makeCalcTemplate(),inputDatasToCells()���܂�ł܂��B�����̒��g�ɂ��Ă͂����ł͐G��Ȃ��ł����܂��B
-�܂��A�ǂ������.out����K�v�ȃf�[�^�����o�����ƌ����ƁA�Ⴆ��o/f�̒l���m�肽�����A
-getReadingIndex��"o/f=",OUTfileAllData���w�肵�܂��BOUTfileAllData�ɂ�.out�̑S�f�[�^(������)�������Ă܂��B
-����ƁAgetReadingIndex��"o/f="�Ƃ����������"="���S�f�[�^���̉��ԖڂɈʒu���Ă��邩��Ԃ��܂��B
-�����Ă��̈ʒu������saveAsXLSX��o/f=1,2,3,4...�݂����ɑ����Ă���Ƃ�������āA�R���}���������邩���v�Z���܂��B�R���}����o/f�̒l�̐��Ɣ�Ⴕ�Ă���̂ŁA���������o/f�̒l���i�[����z����쐬���܂��B���̌�A�R���}�ŋ�؂�Ȃ��爤��ɐ��l���i�[���Ă����܂��B
-bar�ɂ��Ă������悤�ɏ������܂��B
-���̌�AmakeCalcTemplate()�Ōv�Z�V�[�g���쐬���AinputDatasToCells()�ł��ꂼ���o/f,bar�ɑΉ�����CSTAR,GAMMA�̒l�����o���Axlsx�ŕۑ����܂��B
+・saveAsXLSX
+.out内のデータから必要なデータを取り出して.xlsxとして保存します。
+ここが一番めんどいとこです。getReadingIndex(),makeCalcTemplate(),inputDatasToCells()を含んでます。これらの中身についてはここでは触れないでおきます。
+まず、どうやって.outから必要なデータを取り出すかと言うと、例えばo/fの値が知りたい時、
+getReadingIndexに"o/f=",OUTfileAllDataを指定します。OUTfileAllDataには.outの全データ(文字列)が入ってます。
+すると、getReadingIndexは"o/f="という文字列の"="が全データ内の何番目に位置しているかを返します。
+そしてその位置を元にsaveAsXLSXはo/f=1,2,3,4...みたいに続いているところを見て、コンマがいくつあるかを計算します。コンマ数はo/fの値の数と比例しているので、それを元にo/fの値を格納する配列を作成します。その後、コンマで区切りながら愛列に数値を格納していきます。
+barについても同じように処理します。
+その後、makeCalcTemplate()で計算シートを作成し、inputDatasToCells()でそれぞれのo/f,barに対応したCSTAR,GAMMAの値を取り出し、xlsxで保存します。
 
-�EcalcIndividually
-o/f,bar��1�������w�肵�ĂȂ��̂�xlsx���킴�킴���̂͌��Ȃ̂Œ��ڃ��b�Z�[�W�{�b�N�X�ŕ\�����܂��B
-1�������w�肹����.inp,.out���쐬���Ă���Ƃ����O��Ȃ̂ŁA.out�̑S�f�[�^����"CSTAR","GAMMA"�������Ēl�������Ă��Ă邾���ł��B
+・calcIndividually
+o/f,barを1つずつしか指定してないのにxlsxをわざわざ作るのは嫌なので直接メッセージボックスで表示します。
+1つずつしか指定せずに.inp,.outを作成しているという前提なので、.outの全データ内で"CSTAR","GAMMA"を見つけて値を持ってきてるだけです。
 
-�EopenFileByExcel
-�t�@�C����.xlsx��excel�ŊJ���܂��B
-�t�@�C�����Ȃ���Γ��R�G���[�Ȃ̂ŗ�O�����ƃG���[�\�������Ă܂��B
+・openFileByExcel
+ファイル名.xlsxをexcelで開きます。
+ファイルがなければ当然エラーなので例外処理とエラー表示をしてます。
 
 
-�����̑��̊֐�
-�EgetReadingIndex
-����������������A.out�̃f�[�^�A���Ԗڂɏo�Ă��镨��T�����A��^����Ƃ��̕�����̈ʒu��Ԃ��܂��B
-.out�̃f�[�^�ƌ����������������1���������Ă����A�A���ō�����OK�ɂȂ�܂��B
-CSTAR��GAMMA�̓f�[�^���ɉ�����o�Ă���̂ŁAdataStartingNum�ŉ��Ԗڂɏo�Ă�����̂�T�������w�肵�܂��B
+○その他の関数
+・getReadingIndex
+検索したい文字列、.outのデータ、何番目に出てくる物を探すか、を与えるとその文字列の位置を返します。
+.outのデータと検索したい文字列を1文字ずつ見ていき、連続で合えばOKになります。
+CSTARやGAMMAはデータ内に何回も出てくるので、dataStartingNumで何番目に出てくるものを探すかを指定します。
 
-�EinputToCells
-�^������������A�V�[�g��(x,y)�ɓ��͂��܂��B
-���܂�Ӗ��̂Ȃ��֐��B
+・inputToCells
+与えた文字列を、シートの(x,y)に入力します。
+あまり意味のない関数。
 
-�EmakeCalcTemplate
-�e���v���t�@�C���𕡐����Čv�Z�V�[�g�̍쐬�Ə����l�̎������͂����Ă��܂��B
+・makeCalcTemplate
+テンプレファイルを複製して計算シートの作成と初期値の自動入力をしています。
 
-�EinputDatasToCells
-.out�t�@�C������CSTAR,GAMMA�̒l�����o���ăZ���ɓ����B�������͂̂��߂̐��l���������Čv�Z�V�[�g�ɓ��͂���B�v�Z��������͂���Bxlsx�t�@�C���Ɍr������������Ȃǂ̒���������B�Ȃǂ����Ă��܂��B
-CSTAR,GAMMA�ł��ꂼ��1�񂸂�saveAsXLSX����Ăяo����Ă��܂��B
-��������l�ł���A���S���Y�����悭�킩��܂���ł������A�������������邱�Ƃ͂Ȃ��Ǝv���̂ő��v���Ǝv���܂��B(�V�����ʂ̒l���~�����Ƃ����Ȃ�����)
-�����~�����f�[�^�ʂ�getReadingIndex���Ă��' '��'\n'�ŋ�؂��ăf�[�^����Ă�񂾂Ǝv���܂��B
+・inputDatasToCells
+.outファイルからCSTAR,GAMMAの値を取り出してセルに入れる。自動入力のための数値調整をして計算シートに入力する。計算条件を入力する。xlsxファイルに罫線をかけたりなどの調整をする。などをしています。
+CSTAR,GAMMAでそれぞれ1回ずつsaveAsXLSXから呼び出されています。
+今見たら僕ですらアルゴリズムがよくわかりませんでしたが、多分ここいじることはないと思うので大丈夫だと思います。(新しく別の値が欲しいとかがない限り)
+多分欲しいデータ別にgetReadingIndexを呼んで' 'や'\n'で区切ってデータ取ってるんだと思います。
 
-�EradioButtonState
-���W�I�{�^���������ꂽ�Ƃ��ɌĂяo����AradioButtonManager����ԁB
-���W�I�{�^�����������ƃe�L�X�g�{�b�N�X�Ȃǂ̃��C�A�E�g���ς��̂ŁA������Ǘ�����radioButtonManager�����ꂢ�ɏ������߂̊֐��ł��B(����)
+・radioButtonState
+ラジオボタンが押されたときに呼び出され、radioButtonManagerをよぶ。
+ラジオボタンが押されるとテキストボックスなどのレイアウトが変わるので、それを管理するradioButtonManagerをきれいに書くための関数です。(多分)
 
-�EradioButtonManager
-���W�I�{�^���̍s�A���^����ƍ��I������Ă��郉�W�I�{�^���ɉ����ă��C�A�E�g��ύX���܂��B
+・radioButtonManager
+ラジオボタンの行、列を与えると今選択されているラジオボタンに応じてレイアウトを変更します。
 
-�EreadSettings
-DefaultSettings.txt��ǂݍ��݂܂��B�{����ini�ł������������ǂł��Ȃ������L���B
+・readSettings
+DefaultSettings.txtを読み込みます。本当はiniでしたかったけどできなかった記憶。
 
-�EtoolTipInitialize
-�c�[���`�b�v�̕\�����ԂƂ��̐ݒ�B
+・toolTipInitialize
+ツールチップの表示時間とかの設定。
